@@ -328,8 +328,18 @@ function isPalindrome(str) {
  *  'qwerty', 'Q'     => -1
  *  'qwerty', 'p'     => -1
  */
-function getIndexOf(/* str, letter */) {
-  throw new Error('Not implemented');
+function getIndexOf(str, letter) {
+  const iterator = str[Symbol.iterator]();
+  let counter = 0;
+  while (str) {
+    const result = iterator.next();
+    if (result.done) break;
+    if (result.value === letter) {
+      return counter;
+    }
+    counter += 1;
+  }
+  return '-1';
 }
 
 /**
