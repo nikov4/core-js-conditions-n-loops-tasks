@@ -199,8 +199,93 @@ function convertToRomanNumerals(num) {
  *  '10,5'    => 'one zero point five'
  *  '1950.2'  => 'one nine five zero point two'
  */
-function convertNumberToString(/* numberStr */) {
-  throw new Error('Not implemented');
+function convertNumberToString(numberStr) {
+  let stringNum = '';
+  const iterator = numberStr[Symbol.iterator]();
+  while (true) {
+    const result = iterator.next();
+    if (result.done) break;
+    switch (result.value) {
+      case '-':
+        stringNum += 'minus';
+        break;
+      case '1':
+        if (stringNum !== '') {
+          stringNum += ' ';
+        }
+        stringNum += 'one';
+        break;
+      case '2':
+        if (stringNum !== '') {
+          stringNum += ' ';
+        }
+        stringNum += 'two';
+        break;
+      case '3':
+        if (stringNum !== '') {
+          stringNum += ' ';
+        }
+        stringNum += 'three';
+        break;
+      case '4':
+        if (stringNum !== '') {
+          stringNum += ' ';
+        }
+        stringNum += 'four';
+        break;
+      case '5':
+        if (stringNum !== '') {
+          stringNum += ' ';
+        }
+        stringNum += 'five';
+        break;
+      case '6':
+        if (stringNum !== '') {
+          stringNum += ' ';
+        }
+        stringNum += 'six';
+        break;
+      case '7':
+        if (stringNum !== '') {
+          stringNum += ' ';
+        }
+        stringNum += 'seven';
+        break;
+      case '8':
+        if (stringNum !== '') {
+          stringNum += ' ';
+        }
+        stringNum += 'eight';
+        break;
+      case '9':
+        if (stringNum !== '') {
+          stringNum += ' ';
+        }
+        stringNum += 'nine';
+        break;
+      case '0':
+        if (stringNum !== '') {
+          stringNum += ' ';
+        }
+        stringNum += 'zero';
+        break;
+      case ',':
+        if (stringNum !== '') {
+          stringNum += ' ';
+        }
+        stringNum += 'point';
+        break;
+      case '.':
+        if (stringNum !== '') {
+          stringNum += ' ';
+        }
+        stringNum += 'point';
+        break;
+      default:
+        break;
+    }
+  }
+  return stringNum;
 }
 
 /**
