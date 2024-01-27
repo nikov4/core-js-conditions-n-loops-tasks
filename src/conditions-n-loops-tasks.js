@@ -21,8 +21,11 @@
  *  0  => true
  *  -5 => false
  */
-function isPositive(/* number */) {
-  throw new Error('Not implemented');
+function isPositive(number) {
+  if (number >= 0) {
+    return true;
+  }
+  return false;
 }
 
 /**
@@ -38,8 +41,17 @@ function isPositive(/* number */) {
  *  -5, 0, 5      => 5
  *  -0.1, 0, 0.2  => 0.2
  */
-function getMaxNumber(/* a, b, c */) {
-  throw new Error('Not implemented');
+function getMaxNumber(a, b, c) {
+  let max = 0;
+  if (a > b) {
+    max = a;
+  } else {
+    max = b;
+  }
+  if (max < c) {
+    return c;
+  }
+  return max;
 }
 
 /**
@@ -60,8 +72,43 @@ function getMaxNumber(/* a, b, c */) {
  * {x: 1, y: 1}, {x: 2, y: 8} => false
  * {x: 1, y: 1}, {x: 2, y: 8} => false
  */
-function canQueenCaptureKing(/* queen, king */) {
-  throw new Error('Not implemented');
+function canQueenCaptureKing(queen, king) {
+  const Q = queen;
+  const K = king;
+  if (Q.x === K.x || Q.y === K.y) {
+    return true;
+  }
+  let count = 1;
+  let moveQueenUpX;
+  let moveQueenUpY;
+  for (let i = Q.y; i > 1; i -= 1) {
+    moveQueenUpY = i - 1;
+    moveQueenUpX = Q.x + count;
+    if (K.x === moveQueenUpX && K.y === moveQueenUpY) {
+      return true;
+    }
+    moveQueenUpX = Q.x - count;
+    if (K.x === moveQueenUpX && K.y === moveQueenUpY) {
+      return true;
+    }
+    count += 1;
+  }
+  count = 1;
+  let moveQueenDownX;
+  let moveQueenDownY;
+  for (let i = Q.y; i < 8; i += 1) {
+    moveQueenDownY = i + 1;
+    moveQueenDownX = Q.x + count;
+    if (K.x === moveQueenDownX && K.y === moveQueenDownY) {
+      return true;
+    }
+    moveQueenDownX = Q.x - count;
+    if (K.x === moveQueenDownX && K.y === moveQueenDownY) {
+      return true;
+    }
+    count += 1;
+  }
+  return false;
 }
 
 /**
