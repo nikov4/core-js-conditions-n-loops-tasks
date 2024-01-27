@@ -202,7 +202,7 @@ function convertToRomanNumerals(num) {
 function convertNumberToString(numberStr) {
   let stringNum = '';
   const iterator = numberStr[Symbol.iterator]();
-  while (true) {
+  while (numberStr) {
     const result = iterator.next();
     if (result.done) break;
     switch (result.value) {
